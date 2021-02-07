@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+import { useCallback } from 'react';
 import { Title } from '../styles/pages/Home';
 
 interface IProduct {
@@ -11,18 +12,27 @@ interface HomeProps {
 }
 
 export default function Home({recommendedProducts}: HomeProps) {
-  return (
 
-    <section>
-      <Title>Products</Title>
-      <ul>
-        {recommendedProducts.map(product => (
-          <li key={product.id}>
-            {product.title}
-          </li>
-        ))}
-      </ul>
-    </section>
+  const handleSum = useCallback(async () => {
+    const { sum } = (await import('../lib/math')).default;
+    alert(sum(3, 5));
+  }, []);
+
+  return (
+    <>
+      <section>
+        <Title>Products</Title>
+        <ul>
+          {recommendedProducts.map(product => (
+            <li key={product.id}>
+              {product.title}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <button onClick={handleSum} >Soma</button>
+    </>
   )
 }
 
