@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react';
 import dynamic from 'next/dynamic';
 
 const Modal = dynamic(
-  () => import('../../../components/modal'),
+  () => import('@/components/Modal'),
   { loading: () => <p>Loading... </p>, ssr: false }
 )
 
