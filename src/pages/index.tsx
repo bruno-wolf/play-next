@@ -14,6 +14,7 @@ interface HomeProps {
 export default function Home({recommendedProducts}: HomeProps) {
 
   const handleSum = useCallback(async () => {
+    console.log(process.env.NEXT_PUBLIC_API_URL);
     const { sum } = (await import('../lib/math')).default;
     alert(sum(3, 5));
   }, []);
@@ -37,7 +38,7 @@ export default function Home({recommendedProducts}: HomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const response = await fetch('http://localhost:3333/recommended');
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/recommended`);
 
   const recommendedProducts = await response.json();
 
