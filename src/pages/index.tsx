@@ -1,3 +1,4 @@
+import SEO from '@/components/SEO';
 import { GetServerSideProps } from 'next';
 import { useCallback } from 'react';
 import { Title } from '../styles/pages/Home';
@@ -21,6 +22,11 @@ export default function Home({recommendedProducts}: HomeProps) {
 
   return (
     <>
+      <SEO 
+        title="best online store in your world"
+        titleSuffix={true}
+        image="they-call-me-wolf.jpg"
+      />
       <section>
         <Title>Products</Title>
         <ul>
